@@ -1,12 +1,9 @@
 from fastapi import APIRouter
 from app.schemas.user_schema import User
+from app.services.user_service import get_users
 
 router = APIRouter()
 
 @router.get("/users", response_model=list[User])
-async def users():
-    return [
-        {"id": 1, "name": "Alice"},
-        {"id": 2, "name": "Bob"},
-        {"id": 3, "name": "Charlie"}
-    ]
+async def list_users():
+    return get_users()
