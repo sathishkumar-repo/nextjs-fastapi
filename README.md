@@ -19,3 +19,4 @@ docker-compose up
 ## Architecture
 
 Frontend -> FastAPI -> Database
+
