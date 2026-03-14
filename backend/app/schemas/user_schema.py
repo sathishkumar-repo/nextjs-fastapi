@@ -1,9 +1,14 @@
 from pydantic import BaseModel
 
 
-class User(BaseModel):
+class UserCreate(BaseModel):
+    name: str
+
+
+class UserResponse(BaseModel):
     id: int
     name: str
 
-class UserCreate(BaseModel):
-    name: str
+    class Config:
+        # This allows Pydantic to convert SQLAlchemy models → JSON response.
+        from_attributes = True
