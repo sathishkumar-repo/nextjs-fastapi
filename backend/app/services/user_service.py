@@ -1,16 +1,16 @@
-from app.schemas.user_schema import User, UserCreate
+from sqlalchemy.orm import Session
+from app.repositories.user_repository import UserRepository
 
-user_db = [
-    User(id = 1, name = "Alice"),
-    User(id = 2, name = "Bob"),
-    User(id = 3, name = "Charlie")
-]
 
-def get_users():
-    users = user_db
-    return users
+class UserService:
 
-def create_user(user: UserCreate):
-    new_user = User(id=len(user_db) + 1, name = user.name)
-    user_db.append(new_user)
-    return new_user
+    def __init__(self):
+        self.repo = UserRepository()
+
+
+    def create_user(self, db: Session, name: str):
+        return self.repo.create_user(db, name)
+
+
+    def get_users(self, db: Session):
+        return self.repo.get_users(db)
