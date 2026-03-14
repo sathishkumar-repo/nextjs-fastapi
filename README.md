@@ -20,3 +20,16 @@ docker-compose up
 
 Frontend -> FastAPI -> Database
 
+## Request flow
+
+Client
+ ↓
+Route
+ ↓
+Service
+ ↓
+Repository
+ ↓
+SQLAlchemy
+ ↓
+PostgreSQL

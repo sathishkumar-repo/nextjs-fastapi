@@ -160,3 +160,6 @@ test-results/
 # =========================================================
 ehthumbs.db
 Icon?
+
+backend-info.txt
+frontend-info.txt
