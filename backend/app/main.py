@@ -8,10 +8,15 @@ from app.db.base import Base
 
 app = FastAPI(title=settings.APP_NAME, version=settings.APP_VERSION)
 
+if settings.CORS_ORIGIN != "":
+    cors_setting = settings.CORS_ORIGIN
+else:
+    cors_setting = "*"
+
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[settings.CORS_ORIGIN],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

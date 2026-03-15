@@ -5,6 +5,7 @@ class Settings(BaseSettings):
     APP_VERSION: str
     ENVIRONMENT: str
     DATABASE_URL: str
+    CORS_ORIGIN: str
     
     model_config = SettingsConfigDict(
         env_file=".env",
