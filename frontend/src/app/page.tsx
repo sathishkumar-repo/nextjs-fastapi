@@ -1,48 +1,24 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
-import { getUsers, createUser } from "@/services/userService";
+import UserList from "@/features/users/components/UserList"
+import UserForm from "@/features/users/components/UserForm"
+import { useUsers } from "@/features/users/hooks/useUsers"
 
-export default function Home() {
-  const [users, setUsers] = useState<any[]>([]);
-  const [name, setName] = useState("");
+export default function HomePage() {
 
-  useEffect(() => {
-    loadUsers();
-  }, []);
-
-  async function loadUsers() {
-    const data = await getUsers();
-    setUsers(data);
-  }
-
-  async function handleSubmit() {
-    await createUser(name);
-    setName("");
-    loadUsers();
-  }
+  const { users, loading, reload } = useUsers()
 
   return (
-    <div>
-      <h1>User List</h1>
+    <div style={{ padding: "20px" }}>
 
-      <input
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Enter name"
-      />
+      <h1>User Management</h1>
 
-      <button onClick={handleSubmit}>
-        Add User
-      </button>
+      <UserForm onUserCreated={reload} />
 
-      <ul>
-        {users.map((user) => (
-          <li key={user.id}>
-            {user.name}
-          </li>
-        ))}
-      </ul>
+      <hr />
+
+      <UserList users={users} loading={loading} />
+
     </div>
-  );
+  )
 }
