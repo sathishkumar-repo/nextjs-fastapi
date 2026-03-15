@@ -25,8 +25,18 @@ class BaseRepository:
         return db.query(self.model).filter(self.model.id == obj_id).first()
 
     def delete(self, db: Session, obj_id: int):
+        print(f"Repository - Attempting to delete object with ID: {obj_id}")  # Debugging line
         obj = self.get_by_id(db, obj_id)
         if obj:
             db.delete(obj)
             db.commit()
+        return obj
+    
+    def update(self, db: Session, obj_id: int, **kwargs):
+        obj = self.get_by_id(db, obj_id)
+        if obj:
+            for key, value in kwargs.items():
+                setattr(obj, key, value)
+            db.commit()
+            db.refresh(obj)
         return obj

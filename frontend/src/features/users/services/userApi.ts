@@ -11,3 +11,16 @@ export async function createUser(name: string): Promise<User> {
     body: JSON.stringify({ name })
   })
 }
+
+export async function updateUser(id: number, name: string): Promise<User> {
+  return apiClient(`/users/${id}`, {
+    method: "PUT",
+    body: JSON.stringify({ name })
+  })
+}
+
+export async function deleteUser(id: number): Promise<void> {
+  await apiClient(`/users/${id}`, {
+    method: "DELETE"
+  })
+}

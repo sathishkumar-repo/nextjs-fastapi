@@ -24,7 +24,7 @@ export default function HomePage() {
 
           <div className="space-y-4">
             <h2 className="text-2xl font-semibold">Users List</h2>
-            <UserList users={users} loading={loading} />
+            <UserList users={users} loading={loading} onUserChanged={reload} />
           </div>
         </div>
       </div>
