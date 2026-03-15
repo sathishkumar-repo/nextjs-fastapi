@@ -1,31 +1,17 @@
-import { useEffect, useState } from "react"
+import { useQuery } from "@tanstack/react-query"
 import { getUsers } from "../services/userApi"
-import { User } from "../types/user"
 
 export function useUsers() {
-  const [users, setUsers] = useState<User[]>([])
-  const [loading, setLoading] = useState(false)
 
-  async function loadUsers() {
-    setLoading(true)
-
-    try {
-      const data = await getUsers()
-      setUsers(data)
-    } catch (error) {
-      console.error("Failed to load users:", error)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  useEffect(() => {
-    loadUsers()
-  }, [])
+  const query = useQuery({
+    queryKey: ["users"],
+    queryFn: getUsers
+  })
 
   return {
-    users,
-    loading,
-    reload: loadUsers
+    users: query.data || [],
+    loading: query.isLoading,
+    error: query.error,
+    reload: query.refetch
   }
 }
