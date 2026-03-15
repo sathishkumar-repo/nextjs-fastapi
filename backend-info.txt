@@ -1,0 +1,73 @@
+
+====================================================
+pip install fastapi uvicorn httpx
+pip install pydantic-settings
+pip install python-dotenv
+pip install sqlalchemy psycopg2-binary
+pip freeze > requirements.txt
+
+====================================================
+Install PostgreSQL in DOCKER
+
+1. docker pull postgres
+2. docker run -d --name fastapi-postgres -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=fastapi_db postgres
+3. Verify container => docker ps
+4. Verify Database Inside Docker => docker exec -it fastapi-postgres psql -U postgres -d fastapi_db
+    Show tables => \dt
+    Show rows => SELECT * FROM users;
+
+====================================================
+Postgres UI
+
+1. Run pgAdmin in Docker => docker run -d --name fastapi-pgadmin -p 5050:80 -e PGADMIN_DEFAULT_EMAIL=admin@admin.com -e PGADMIN_DEFAULT_PASSWORD=admin dpage/pgadmin4
+2. Open browser => http://localhost:5050
+3. Login:
+    Email: admin@admin.com
+    Password: admin
+4. Add PostgreSQL Server
+    Name: FastAPI PostgreSQL
+    Connection Tab:
+        Host name/address: host.docker.internal
+        Port: 5432
+        Username: postgres
+        Password: postgres
+        Database: fastapi_db        
+5. Explore Database
+    Servers
+     └ PostgreSQL
+        └ Databases
+           └ fastapi_db
+              └ Schemas
+                 └ public
+                    └ Tables
+====================================================
+Step 0 — Project Setup (First Thing)
+Step 1 — Create Python Virtual Environment
+Step 2 — Install Minimal Packages
+Step 3 — Create First App
+Step 4 — Run the API
+Step 5 — Add First API Route
+Step-6 — Introduce Folder Structure + APIRouter
+Step-7 — Add Schemas (Data Validation)
+Step-8 — Introduce Service Layer
+Step-9 — Add Config Layer (Application Settings)
+Step-10 — Environment Variables with .env
+Step-11 — Add POST Endpoint with Request Validation
+Step-12 — Dependency Injection with Depends
+Step-13 — Add Database Layer
+Step-13.1 — Create Repository Folder
+Step-13.2 — User Repository
+Step-13.2.1 — Create Base Repository
+Step-13.3 — Service Uses Repository
+Step-14 — Connect API to Database
+
+
+
+Layer	        Responsibility
+------------------------------
+routes	        HTTP endpoints
+services	    business logic
+schemas	        request/response models
+config          application configuration
+Repository      database queries
+Model           database structure

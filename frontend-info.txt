@@ -1,0 +1,46 @@
+=====================================================
+npx create-next-app@latest frontend
+npm run dev
+=====================================================
+Browser
+   ↓
+Next.js Frontend
+   ↓
+FastAPI Backend
+   ↓
+PostgreSQL
+=====================================================
+Next.js Page
+      ↓
+useUsers Hook
+      ↓
+userApi Service
+      ↓
+apiClient
+      ↓
+FastAPI Backend
+      ↓
+PostgreSQL
+=====================================================
+✔ TypeScript → Yes
+✔ ESLint → Yes
+✔ Tailwind CSS → Yes
+✔ src/ directory → Yes
+✔ App Router → Yes
+✔ Import alias → Yes
+
+
+Folder	        Purpose
+----------------------------
+app	            pages (NextJS App Router)
+components	    reusable UI components
+services	    API calls
+types	        TypeScript interfaces
+utils	        helper functions
+
+Folder	            Purpose
+----------------------------
+users/services	    API calls
+users/hooks	        React state logic
+users/components	UI components
+users/types	        TypeScript models

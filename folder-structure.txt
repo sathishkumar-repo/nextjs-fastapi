@@ -1,0 +1,64 @@
+nextjs-fastapi = Git Repo
+    .gitignore
+    README.md
+    frontend/
+    ├── .env.local
+    ├── .gitignore
+    ├── eslint.config.mjs
+    ├── next-env.d.ts
+    ├── next.config.ts
+    ├── package.json
+    ├── postcss.config.mjs
+    ├── README.md
+    ├── tsconfig.json
+    ├── types/
+    │   ├── cache-life.d.ts
+    │   ├── routes.d.ts
+    │   └── validator.ts
+    ├── public/
+    └── src/
+        ├── app/
+        │   ├── globals.css
+        │   ├── layout.tsx
+        │   └── page.tsx
+        ├── features/
+        │   └── users/
+        │       ├── components/
+        │       │   ├── UserForm.tsx
+        │       │   └── UserList.tsx
+        │       ├── hooks/
+        │       │   └── useUsers.ts
+        │       ├── services/
+        │       │   └── userApi.ts
+        │       └── types/
+        │           └── users.ts
+        ├── lib/
+        │   └── apiClient.ts
+        ├── providers/
+        │   └── QueryProvider.tsx
+        └── services/
+            └── userService.ts
+            
+    backend/
+    ├── .env
+    ├── requirements.txt
+    └── app/
+        ├── main.py
+        ├── config/
+        │   └── settings.py
+        ├── db/
+        │   ├── base.py
+        │   └── session.py
+        ├── dependencies/
+        │   └── user_dependencies.py
+        ├── models/
+        │   └── user_model.py
+        ├── repositories/
+        │   ├── base_repository.py
+        │   └── user_repository.py
+        ├── routes/
+        │   └── user_routes.py
+        ├── schemas/
+        │   └── user_schema.py
+        └── services/
+            └── user_service.py

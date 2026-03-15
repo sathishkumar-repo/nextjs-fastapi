@@ -137,7 +137,6 @@ storage/
 # =========================================================
 # MACHINE LEARNING / AI ARTIFACTS (future proof)
 # =========================================================
-models/
 checkpoints/
 embeddings/
 vectorstore/
@@ -161,5 +160,3 @@ test-results/
 ehthumbs.db
 Icon?
 
-backend-info.txt
-frontend-info.txt
