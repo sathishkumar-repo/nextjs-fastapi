@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { PencilIcon, TrashIcon } from "@heroicons/react/24/outline"
 import { updateUser, deleteUser } from "../services/userApi"
 import { User } from "../types/users"
 
@@ -147,15 +148,17 @@ export default function UserList({ users, loading, onUserChanged }: Props) {
                       type="button"
                       onClick={() => startEditing(user)}
                       className="inline-flex items-center justify-center rounded-md border border-blue-500 bg-white px-3 py-2 text-sm font-medium text-blue-600 hover:bg-blue-50 dark:border-blue-400 dark:bg-gray-900 dark:text-blue-200"
+                      aria-label="Edit user"
                     >
-                      Edit
+                      <PencilIcon className="w-3 h-3" />
                     </button>
                     <button
                       type="button"
                       onClick={() => handleDelete(user.id)}
                       className="inline-flex items-center justify-center rounded-md bg-red-500 px-3 py-2 text-sm font-medium text-white hover:bg-red-600"
+                      aria-label="Delete user"
                     >
-                      Delete
+                      <TrashIcon className="w-3 h-3" />
                     </button>
                   </>
                 )}
